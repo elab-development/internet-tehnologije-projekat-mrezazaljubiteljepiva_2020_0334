@@ -17,7 +17,10 @@ return new class extends Migration
             $table->text('text');
             $table->string('post_title');
             $table->string('photo_path'); // slika se memorise kao url koji vodi do nje
-            /*
+            /* 
+                ---------------------------------
+                Foreign key dodat preko migracije
+                ---------------------------------
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')

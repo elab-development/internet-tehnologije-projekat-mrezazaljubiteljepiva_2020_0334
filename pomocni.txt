@@ -1,0 +1,12 @@
+User::create(['username'=>'Peter', 'email'=>'peter@gmail.com', 'password'=>'123', 'nickname'=>'Pete'])
+
+$user->username='Peter'
+$user->email='peter@gmail.com'
+$user->password='123'
+$user->nickname='Pete'
+$user->save()
+
+
+Post::create(['text'=>'Kako obozavam da pijem kraft pivo petkom uvece', 'photo_path'=>'nema', 'user_id'=>1])
+
+User::create(['username'=>'Philby', 'email'=>'philby@gmail.com', 'password'=>'123', 'nickname'=>'Phil'])
