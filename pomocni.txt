@@ -1,5 +1,5 @@
 User::create(['username'=>'Peter', 'email'=>'peter@gmail.com', 'password'=>'123', 'nickname'=>'Pete'])
-
+User::create(['username'=>'Philby', 'email'=>'philby@gmail.com', 'password'=>'123', 'nickname'=>'Phil'])
 $user->username='Peter'
 $user->email='peter@gmail.com'
 $user->password='123'
@@ -8,5 +8,4 @@ $user->save()
 
 
 Post::create(['text'=>'Kako obozavam da pijem kraft pivo petkom uvece', 'photo_path'=>'nema', 'user_id'=>1])
-
-User::create(['username'=>'Philby', 'email'=>'philby@gmail.com', 'password'=>'123', 'nickname'=>'Phil'])
+Post::create(['text'=>'genericni tekst', 'photo_path'=>'nema', 'user_id'=>2])

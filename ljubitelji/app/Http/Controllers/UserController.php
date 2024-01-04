@@ -64,8 +64,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy($user_id)
     {
-        //
+        $user = User::where('id', $user_id);
+        // ubaciti neku autentifikaciju
+        $user->delete();
     }
 }

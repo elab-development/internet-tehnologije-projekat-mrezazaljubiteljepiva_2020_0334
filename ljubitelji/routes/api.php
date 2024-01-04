@@ -20,11 +20,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-// Route::get('/posts', [PostController::class, 'index']);
-// Route::get('/posts/{id}', [PostController::class, 'show']);
-
-Route::resource('/posts', PostController::class)->only('index');
-
+// ---  USER-POST RUTE  --- //
 Route::get('/users/{id}/posts', [UserPostController::class, 'index'])->name('users.posts.index');
 //Route::resource('users.posts', UserPostController::class)->name('users.posts.index')->only('index');
+
+
+// ---  USER RUTE  --- //
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+
+// ---  POST RUTE   --- //
+// Route::get('/posts', [PostController::class, 'index']);
+// Route::get('/posts/{id}', [PostController::class, 'show']);
+Route::resource('/posts', PostController::class)->only('index');
+Route::resource('/posts', PostController::class)->only('destroy'); // brisanje posta iz baze
+//Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
