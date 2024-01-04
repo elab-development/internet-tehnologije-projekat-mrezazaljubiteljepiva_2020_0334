@@ -21,7 +21,7 @@ class PostResource extends JsonResource
             'text'=>$this->resource->text,
             'post_title'=>$this->resource->post_title,
             //'user'=>$this->resource->user
-            'user'=> new UserResource($this->resource->user)
+            'user'=> new UserResource($this->resource->user) // za vracanje full usera
         ];
     }
 }
