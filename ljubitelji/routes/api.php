@@ -36,3 +36,5 @@ Route::resource('/posts', PostController::class)->only('index');
 Route::resource('/posts', PostController::class)->only('destroy'); // brisanje posta iz baze
 //Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+// ---  COMMENT RUTE   --- //
+Route::get('/comments', [CommentController::class, 'index']);
