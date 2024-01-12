@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -20,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 // ---  USER-POST RUTE  --- //
 Route::get('/users/{id}/posts', [UserPostController::class, 'index'])->name('users.posts.index');
 //Route::resource('users.posts', UserPostController::class)->name('users.posts.index')->only('index');
@@ -36,5 +38,12 @@ Route::resource('/posts', PostController::class)->only('index');
 Route::resource('/posts', PostController::class)->only('destroy'); // brisanje posta iz baze
 //Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-// ---  COMMENT RUTE   --- //
+
+
+// ---    COMMENT RUTE    --- //
 Route::get('/comments', [CommentController::class, 'index']);
+
+
+// ---   Autentifikacija  --- //
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
