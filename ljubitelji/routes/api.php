@@ -34,9 +34,9 @@ Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.de
 // ---  POST RUTE   --- //
 // Route::get('/posts', [PostController::class, 'index']);
 // Route::get('/posts/{id}', [PostController::class, 'show']);
-Route::resource('/posts', PostController::class)->only('index');
-Route::resource('/posts', PostController::class)->only('destroy'); // brisanje posta iz baze
+//Route::resource('/posts', PostController::class)->only('destroy'); // brisanje posta iz baze
 //Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::resource('/posts', PostController::class)->only('index');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 
@@ -44,6 +44,18 @@ Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/comments', [CommentController::class, 'index']);
 
 
-// ---   Autentifikacija  --- //
+// ---   Registrovanje & Login  --- //
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+
+
+// ---    Middleware - omogucava da ne moze da se pristupi ovim rutama ako korisnik nije autorizovan   --- //
+Route::group(['middleware'=>['auth:sanctum']], function(){
+    Route::get('/profile', function (Request $request){
+        return auth()->user();
+    });
+    Route::resource('posts', PostController::class)->only(['editPostText','store','destroy']);
+    //Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+
