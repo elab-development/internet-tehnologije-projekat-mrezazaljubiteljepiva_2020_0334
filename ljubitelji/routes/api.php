@@ -4,7 +4,9 @@ use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPostController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------

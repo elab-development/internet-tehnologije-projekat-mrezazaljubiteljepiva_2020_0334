@@ -69,5 +69,6 @@ class UserController extends Controller
         $user = User::where('id', $user_id);
         // ubaciti neku autentifikaciju
         $user->delete();
+        return response()->json(["message"=>"Korisnik uspesno obrisan"]);
     }
 }
